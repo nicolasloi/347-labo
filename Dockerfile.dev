@@ -1,0 +1,15 @@
+# Dockerfile.dev
+
+FROM laravelsail/php80-composer:latest
+
+# Copie de votre application dans le conteneur
+COPY ./ /var/www/html
+
+# Installation des dépendances
+RUN composer install --optimize-autoloader
+
+# Génération de la clé d'application
+RUN php artisan key:generate --force
+
+# Exécution des migrations et seeding pour l'environnement de dev
+CMD ["php", "artisan", "migrate", "--seed", "--seeder=DatabaseSeederDev", "--force"]

@@ -1,7 +1,7 @@
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.2
+            context: .
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -49,8 +49,8 @@ services:
             timeout: 5s
     laravel.dev:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.2
-            dockerfile: Dockerfile
+            context: .
+            dockerfile: Dockerfile.dev
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.2/app
